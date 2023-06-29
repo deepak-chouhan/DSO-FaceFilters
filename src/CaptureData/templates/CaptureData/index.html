@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    CaptureData
+{% endblock title %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'CaptureData/css/style.css' %}">
+{% endblock styles %}
+
+{% block content %}
+    <div class="hero">
+        <div class="nav">
+            <h2>FaceFilter</h2>
+        </div>
+    
+        <div class="container">
+            <div class="overlay" id="overlay">
+                <img id="video-stream" src="{% url 'video-stream' %}">
+            </div>
+            <div class="filters" id="filters">
+                <div class="filter" data-filter-name="normal">Normal</div>
+                <div class="filter" data-filter-name="gray">Gray</div>
+                <div class="filter" data-filter-name="cartoon">Cartoon</div>
+                <div class="filter" data-filter-name="pixel">Pixel</div>
+            </div>
+        </div>
+
+        <footer>
+            <p>FaceFilters By Deepak Chouhan</p>
+        </footer>
+    </div>
+{% endblock content %}
+{% block script %}
+    <script src="{% static 'CaptureData/js/filter.js' %}" async></script>
+{% endblock script %}
