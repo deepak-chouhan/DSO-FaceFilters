@@ -21,8 +21,6 @@ class VideoCamera(imageFilters.imageFilters):
     
     def setFilter(self, filter):
         self.filter = filter
-        print(f"New Filter: {filter}")
-        print(f"Assigned Filter: {self.filter}")
         return self.filter
 
     def update(self):
@@ -31,12 +29,12 @@ class VideoCamera(imageFilters.imageFilters):
             self.frame = self.addFilter(self.frame)
     
     def addFilter(self, image):
-        if self.filter == "normal":
-            return self.normal(image)
-        if self.filter == "gray":
-            return self.gray(image)
-        if self.filter == "cartoon":
-            return self.cartoon(image)
-        if self.filter == "pixel":
-            return self.pixel(image)
+        filters = {
+            "normal": self.normal,
+            "gray": self.gray,
+            "cartoon": self.cartoon,
+            "pixel": self.pixel,
+            "taupe": self.taupe
+        }
+        return filters.get(self.filter, self.pixel)(image)
 

@@ -19,3 +19,12 @@ class imageFilters:
         image = cv2.bitwise_and(color, color, mask=edges)
         return image
     
+    def pixel(self, image):
+        height, width = image.shape[:2]
+        w, h = (50, 50)
+        temp = cv2.resize(image, (w, h))
+        return cv2.resize(temp, (width, height), interpolation=cv2.INTER_NEAREST)
+    
+    def taupe(self, image):
+        return cv2.cvtColor(image, cv2.COLOR_BGR2XYZ)
+    
