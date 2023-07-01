@@ -6,9 +6,9 @@ class VideoCamera(imageFilters.imageFilters):
     def __init__(self):
         super().__init__()
         self.video = cv2.VideoCapture(0)
+        self.filter = "normal"
         (self.grabbed, self.frame) = self.video.read()
         threading.Thread(target=self.update, args=()).start()
-        self.filter = "normal"
 
     def __del__(self):
         self.video.release()
